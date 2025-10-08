@@ -1,0 +1,331 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* CSS Variables for Theme System */
+:root {
+  --transition-speed: 0.3s;
+  --border-radius: 8px;
+  --shadow-sm: 0 2px 8px;
+  --shadow-md: 0 4px 16px;
+  --shadow-lg: 0 8px 32px;
+  
+  /* Responsive Breakpoints */
+  --mobile: 320px;
+  --mobile-landscape: 481px;
+  --tablet: 769px;
+  --desktop: 1025px;
+  --desktop-large: 1440px;
+}
+
+/* WHITE THEME (Light Mode) */
+[data-theme="white"] {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F5;
+  --bg-tertiary: #E8E8E8;
+  --bg-hover: #F0F0F0;
+  
+  --text-primary: #000000;
+  --text-secondary: #2C2C2C;
+  --text-tertiary: #555555;
+  --text-muted: #999999;
+  
+  --border-primary: #000000;
+  --border-secondary: #333333;
+  --border-tertiary: #CCCCCC;
+  
+  --accent-blue: #146EF5;
+  --accent-orange: #FF6A00;
+  --accent-green: #00B07E;
+  --accent-red: #DC2626;
+  
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-color-md: rgba(0, 0, 0, 0.15);
+  --shadow-color-lg: rgba(0, 0, 0, 0.2);
+  
+  --icon-fill: #000000;
+  --button-bg: #000000;
+  --button-text: #FFFFFF;
+  --card-bg: #FFFFFF;
+  
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+}
+
+/* BLACK THEME (Dark Mode) */
+[data-theme="black"] {
+  --bg-primary: #121212;
+  --bg-secondary: #1E1E1E;
+  --bg-tertiary: #2A2A2A;
+  --bg-hover: #333333;
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: #E0E0E0;
+  --text-tertiary: #B0B0B0;
+  --text-muted: #666666;
+  
+  --border-primary: #FFFFFF;
+  --border-secondary: #CCCCCC;
+  --border-tertiary: #444444;
+  
+  --accent-blue: #60A5FA;
+  --accent-orange: #FB923C;
+  --accent-green: #34D399;
+  --accent-red: #EF4444;
+  
+  --shadow-color: rgba(255, 255, 255, 0.05);
+  --shadow-color-md: rgba(255, 255, 255, 0.08);
+  --shadow-color-lg: rgba(255, 255, 255, 0.1);
+  
+  --icon-fill: #FFFFFF;
+  --button-bg: #FFFFFF;
+  --button-text: #000000;
+  --card-bg: #1E1E1E;
+  
+  --overlay-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* Social Media Brand Colors - Consistent Across Themes */
+:root {
+  --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  --facebook-blue: #1877F2;
+  --youtube-red: #FF0000;
+  --whatsapp-green: #25D366;
+  --linkedin-blue: #0A66C2;
+  --twitter-blue: #1DA1F2;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+  color: var(--accent-orange);
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 6rem 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 4rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--text-primary);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 2px solid var(--border-primary);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg) var(--shadow-color-lg);
+  border-color: var(--accent-blue);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border-color: var(--button-bg);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md) var(--shadow-color-md);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+  
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Loading Animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-padding-top: 80px;
+}
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Mobile First - Base styles above for 320px+ */
+
+/* Mobile Landscape: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  
+  .section {
+    padding: 4rem 0;
+  }
+}
+
+/* Tablet: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+  
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.5rem; }
+  
+  .section {
+    padding: 5rem 0;
+  }
+}
+
+/* Desktop: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+  
+  h1 { font-size: 4rem; }
+  h2 { font-size: 3rem; }
+}
+
+/* Large Desktop: 1441px+ */
+@media (min-width: 1441px) {
+  .container {
+    max-width: 1400px;
+  }
+  
+  h1 { font-size: 4.5rem; }
+  h2 { font-size: 3.5rem; }
+}
+
+/* Mobile Menu Responsive */
+@media (max-width: 768px) {
+  header nav {
+    display: none !important;
+  }
+  
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+  
+  /* Stack grid layouts on mobile */
+  .gallery-grid,
+  .course-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  header,
+  footer,
+  .theme-toggle,
+  .btn {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+}
